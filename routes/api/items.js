@@ -20,4 +20,19 @@ router.post('/', (req,res)=>{
     .then(item=>res.json(item))
     .catch(err=>console.log(err))
 })
+
+// DELETE
+router.delete('/:id', (req,res)=>{
+    itemModel.findById(req.params.id)
+    .then(item => item.remove()
+        .then( ()=> res.json({
+            success : true
+        }))
+    )
+    .catch(err=> res.status(404).json(
+        {
+            success:false
+        })
+    );
+})
 module.exports = router;
