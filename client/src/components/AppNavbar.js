@@ -19,6 +19,11 @@ class AppNavabar extends Component {
             isOpen : false
         }
     }
+    toggle = ()=>{
+        this.setState({
+            isOpen : !this.state.isOpen
+        })
+    }
     render() { 
         return ( 
             <div>
@@ -27,25 +32,20 @@ class AppNavabar extends Component {
                         <NavbarBrand href="/">
                             Shopping List
                         </NavbarBrand>
-                        <NavbarToggler onClick={this.toggle}>
-                            <Collapse isOpen={this.state.isOpen} navbar>
-                                <Nav className="ml-auto" navbar>
-                                    <NavItem>
-                                        <NavLink href="https://www.google.com">Google</NavLink>
-                                    </NavItem>
-                                </Nav>
-                            </Collapse>
-                        </NavbarToggler>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <NavLink href="https://www.google.com">Google</NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
                     </Container>
                 </Navbar>
             </div>
          );
     }
-    toggle = ()=>{
-        this.setState({
-            isOpen : !this.state.isOpen
-        })
-    }
+    
 }
 
 
