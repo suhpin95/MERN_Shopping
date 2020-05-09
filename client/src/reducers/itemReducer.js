@@ -27,13 +27,20 @@ export default function(state = initialState, action){
         case GET_ITEMS:
             return {
                 ...state    
-            };
-         default:
-            return state   
-        /*case GET_ITEMS:
-            return
-        case GET_ITEMS:
-            return */
+            };    
+        case DELETE_ITEMS:
+            console.log("reducers")
+            return {
+                ...state,
+                items : state.items.filter( item=> item.id !== action.id )
+            }
+        case POST_ITEMS:
+            return {
+                ...state,
+                items : [action.payload, ...state.items]
+            }
+        default:
+            return state
             
     }
 }

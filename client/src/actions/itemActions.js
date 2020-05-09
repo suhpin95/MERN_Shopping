@@ -6,14 +6,17 @@ export const getItems = ()=>{
     }
 }
 
-/*export const postItem = ()=>{
+export const postItem = (item) =>{
     return{
         type : POST_ITEMS,
+        payload : item
     }
 }
 
-export const deleteItem = ()=>{
+export const deleteItem = id =>{
+    console.log("delete dispatched")
     return{
         type : DELETE_ITEMS,
+        id
     }
-}*/
+}
