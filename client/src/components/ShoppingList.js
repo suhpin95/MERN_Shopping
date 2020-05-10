@@ -10,8 +10,8 @@ class ShoppingList extends Component {
         this.props.getItems();
     }
 
-    onDelete = (id) => {
-        this.props.deleteItem(id);
+    onDelete = (_id) => {
+        this.props.deleteItem(_id);
     }
     render() {
         const { items } = this.props.item; 
@@ -19,12 +19,12 @@ class ShoppingList extends Component {
             <Container>
                 <ListGroup>
                     <TransitionGroup className="shoppingList">
-                        { items.map( ( {id,name} ) => 
+                        { items.map( ( {_id,name} ) => 
                             (
-                            <CSSTransition key = {id} timeout= {500} classNames="fade" >
+                            <CSSTransition key = {_id} timeout= {500} classNames="fade" >
                                 <ListGroupItem>
                                     <Button className="remove-btn" color="danger" size="sm"
-                                     onClick = { this.onDelete.bind(this,id) }
+                                     onClick = { this.onDelete.bind( this, _id ) }
                                     > &times; 
                                     </Button>
                                     {name}
@@ -42,24 +42,3 @@ const mapStatetoProps = (state)=>({
     item: state.item
 }); 
 export default connect(mapStatetoProps, { getItems, deleteItem } ) (ShoppingList);
-
-/**
- * <Button
- *  color = "dark"
- *  style = {{ marginBottom : '2rem' }}
- *  onClick = {() => 
- *      const name = prompt('Enter Items')
- *       if(name){
- *          this.setState( state=>{
- *              items : [...state.items, {
- *                  id : uuid(),
- *                  name 
- *              }]    
- *          } )    
- *      }    
- *  }
- * >
- *  
- * </Button>
- * 
- */
