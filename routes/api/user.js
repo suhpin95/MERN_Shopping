@@ -5,7 +5,7 @@ const userModel = require('../../models/User');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-// GET
+// POST
 router.post('/', (req, res)=> {
    const { name, emailId, passWord } = req.body;
 
@@ -27,14 +27,26 @@ router.post('/', (req, res)=> {
                         if(err) throw err;
                         newUser.passWord = hash;
                         newUser.save()
-                               .then(user=>{
-                                   res.json({
-                                       user : {
-                                           id : user.id,
-                                           name : user.name,
-                                           emailID : user.emailId
-                                       }
-                                   })
+                               .then(user=> {
+
+                                jwt.sign(
+                                    { id: user.id },
+                                    config.get('jwtSecret'),
+                                    { expiresIn: 2400 },
+                                    (err, token)=>{
+                                        if(err) return err;
+                                        else{
+                                            res.json({
+                                                token ,
+                                                user : {
+                                                    id : user.id,
+                                                    name : user.name,
+                                                    emailID : user.emailId
+                                                }
+                                            })
+                                        }
+                                    }
+                                )
                                })
 
                     })
