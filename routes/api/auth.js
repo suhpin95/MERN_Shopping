@@ -35,7 +35,7 @@ router.post('/', (req, res)=> {
                                             user : {
                                                 id : user.id,
                                                 name : user.name,
-                                                emailID : user.emailId
+                                                emailId : user.emailId
                                             }
                                         })
                                     }
