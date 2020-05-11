@@ -83,11 +83,11 @@ class RegisterModal extends Component {
                                     onChange = {this.onChange}
                                 />
 
-                                 <Label for="email">Email</Label>
+                                 <Label for="emailId">Email</Label>
                                 <Input 
                                     type="email"
                                     name = "email"
-                                    id = "email"
+                                    id = "emailId"
                                     placeholder="Email"
                                     className = "mb-3"
                                     onChange = {this.onChange}
@@ -96,8 +96,8 @@ class RegisterModal extends Component {
                                 <Label for="password">Password</Label>
                                 <Input 
                                     type="password"
-                                    name = "password"
-                                    id = "password"
+                                    name = "passWord"
+                                    id = "passWord"
                                     placeholder="Password"
                                     className = "mb-3"
                                     onChange = {this.onChange}
@@ -117,7 +117,7 @@ class RegisterModal extends Component {
          );
     }
 }
- const mapStatetoProps = (state)=>({
+const mapStatetoProps = (state)=>({
     isAuthenticated: state.auth,
     error : state.error
  })

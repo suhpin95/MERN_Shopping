@@ -38,18 +38,19 @@ import {
         }
         const body = JSON.stringify({ name, emailId, passWord });
 
-        axios.post('/api/users', body, config)
+        axios
+            .post('/api/users', body, config)
              .then( res=> dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data
              }))
              .catch(err=>{
-                 console.log(err)
+                //  console.log(err)
                 dispatch(
-                    returnErrors(err.response.data, err.response.status, REGISTER_FAIL)
+                    returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
                     );
                 dispatch({
-                    type : AUTH_ERROR
+                    type : REGISTER_FAIL
                 })
             })
              
